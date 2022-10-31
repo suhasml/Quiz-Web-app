@@ -142,15 +142,15 @@ var x = setInterval(function () {
 }, 1000);
 
 //link to previous question:
-// const prevBtn = document.getElementById('previous')
-// prevBtn.addEventListener('click', () => {
-//     currentQuiz--
-//     if(currentQuiz < 0) {
-//         alert('You are on the first question')
-//     }
-//     loadQuiz()
+const prevBtn = document.getElementById('previous')
+prevBtn.addEventListener('click', () => {
+    currentQuiz--
+    if(currentQuiz < 0) {
+        alert('You are on the first question')
+    }
+    loadQuiz()
 
-// })
+})
 
 //link to next question:
 const nextBtn = document.getElementById('next')
