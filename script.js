@@ -1,192 +1,178 @@
-let quizData = [
-    {
-        id: 1,
-        question: "Which language runs in a web browser?",
-        a: "Java",
-        b: "C",
-        c: "Python",
-        d: "javascript",
-        correct: "d",
-    },
-    {
-        id: 2,
-        question: "What does CSS stand for?",
-        a: "Central Style Sheets",
-        b: "Cascading Style Sheets",
-        c: "Cascading Simple Sheets",
-        d: "Cars SUVs Sailboats",
-        correct: "b",
-    },
-    {
-        id: 3,
-        question: "What does HTML stand for?",
-        a: "Hypertext Markup Language",
-        b: "Hypertext Markdown Language",
-        c: "Hyperloop Machine Language",
-        d: "Helicopters Terminals Motorboats Lamborginis",
-        correct: "a",
-    },
-    {
-        id: 4,
-        question: "What year was JavaScript launched?",
-        a: "1996",
-        b: "1995",
-        c: "1994",
-        d: "none of the above",
-        correct: "b",
-    },
-];
-const quiz= document.getElementById('quiz')
-const answerEls = document.querySelectorAll('.answer')
-const questionEl = document.getElementById('question')
-const a_text = document.getElementById('a_text')
-const b_text = document.getElementById('b_text')
-const c_text = document.getElementById('c_text')
-const d_text = document.getElementById('d_text')
-const submitBtn = document.getElementById('submit') 
-const q1 = document.getElementsByClassName('question-number-1')
-let currentQuiz = 0
-let score = 0
-loadQuiz()
-function loadQuiz() {
-    deselectAnswers()
-    const currentQuizData = quizData[currentQuiz]
-    questionEl.innerText = currentQuizData.id + ". " + currentQuizData.question
-    a_text.innerText = currentQuizData.a
-    b_text.innerText = currentQuizData.b
-    c_text.innerText = currentQuizData.c
-    d_text.innerText = currentQuizData.d
-}
-function deselectAnswers() {
-    answerEls.forEach(answerEl => answerEl.checked = false)
-}
-function getSelected() {
-    let answer
-    answerEls.forEach(answerEl => {
-        if(answerEl.checked) {
-            answer = answerEl.id
+(function(){
+    function buildQuiz(){
+      // variable to store the HTML output
+      const output = [];
+  
+      // for each question...
+      myQuestions.forEach(
+        (currentQuestion, questionNumber) => {
+  
+          // variable to store the list of possible answers
+          const answers = [];
+  
+          // and for each available answer...
+          for(letter in currentQuestion.answers){
+  
+            // ...add an HTML radio button
+            answers.push(
+              `<label>
+                <input type="radio" name="question${questionNumber}" id="question${questionNumber}" value="${letter}">
+                
+                ${letter} :
+                ${currentQuestion.answers[letter]}
+              </label>`
+            );
+          }
+  
+          // add this question and its answers to the output
+          output.push(
+            `<div class="question"> ${currentQuestion.question} </div>
+            <div class="answers"> ${answers.join('')} </div>`
+          );
         }
-    })
-    return answer
-}
-// submitBtn.addEventListener('click', () => {
-//     const answer = getSelected()
-//     if(answer) {
-//        if(answer == quizData[currentQuiz].correct) {
-//            score++
-//        }
-//        currentQuiz++
-//        if(currentQuiz < quizData.length) {
-//            loadQuiz()
-//        } else {
-//            quiz.innerHTML = `
-//            <h2>You answered ${score}/${quizData.length} questions correctly</h2>
-//            <button onclick="location.reload()">Reload</button>
-//            `
-//        }
-//     }
-// })
-// send navigation bar to first question:
-const nav1 = document.getElementById('q1')
-nav1.addEventListener('click', () => {
-    currentQuiz = 0
-    loadQuiz()
-})
-// send navigation bar to second question:
-const nav2 = document.getElementById('q2')
-nav2.addEventListener('click', () => {
-    currentQuiz = 1
-    loadQuiz()
-})
-// send navigation bar to third question:
-const nav3 = document.getElementById('q3')
-nav3.addEventListener('click', () => {
-    currentQuiz = 2
-    loadQuiz()
-})
-// send navigation bar to fourth question:
-const nav4 = document.getElementById('q4')
-nav4.addEventListener('click', () => {
-    currentQuiz = 3
-    loadQuiz()
-})
-// Set the date we're counting down to
-var now = new Date().getTime();
-//Display in minutes
-var countDownDate = now + (20 * 60 * 1000);
-
-// Update the count down every 1 second
-var x = setInterval(function () {
-
-    // Get today's date and time
-    var now = new Date().getTime();
-
-    // Find the distance between now and the count down date
-    var distance = countDownDate - now;
-
-    // Time calculations for days, hours, minutes and seconds
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    // Display the result in the element with id="demo"
-    document.getElementById("timer").innerHTML =  minutes + "m " + seconds + "s ";
-
-    // If the count down is finished, write some text
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("timer").innerHTML = "EXPIRED";
-        quiz.innerHTML = `
-    <h2>You answered ${score}/${quizData.length} questions correctly</h2>
-    <button onclick="location.reload()">Reload</button>`
+      );
+  
+      // finally combine our output list into one string of HTML and put it on the page
+      quizContainer.innerHTML = output.join('');
     }
-}, 1000);
-
-//link to previous question:
-// const prevBtn = document.getElementById('previous')
-// prevBtn.addEventListener('click', () => {
-//     currentQuiz--
-//     if(currentQuiz < 0) {
-//         alert('You are on the first question')
-//     }
-//     loadQuiz()
-
-// })
-
-//link to next question:
-const nextBtn = document.getElementById('next')
-nextBtn.addEventListener('click', () => {
-    const answer = getSelected()
-    if(currentQuiz <= quizData.length-1){
-    if(answer) {
-       if(answer == quizData[currentQuiz].correct) {
-           score++
-       }
-       currentQuiz++
-       if(currentQuiz < quizData.length) {
-           loadQuiz()
-       } 
-        else {
-            alert("You have completed the quiz!, click Submit to see your score")
-        } 
-    } 
-    else{
-        alert("Please select an answer")
-    }
-}
-   
-})
-
-//link to submit button:
-submitBtn.addEventListener('click', () => {
-    const answer = getSelected()
-    if(currentQuiz == quizData.length-1){
-    if(answer) {
-         if(answer == quizData[currentQuiz].correct) {
-              score++
-            }
+  
+    function showResults(){
+  
+      // gather answer containers from our quiz
+      const answerContainers = quizContainer.querySelectorAll('.answers');
+  
+      // keep track of user's answers
+      let numCorrect = 0;
+  
+      // for each question...
+      myQuestions.forEach( (currentQuestion, questionNumber) => {
+  
+        // find selected answer
+        const answerContainer = answerContainers[questionNumber];
+        const selector = `input[name=question${questionNumber}]:checked`;
+        const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+  
+        // if answer is correct
+        if(userAnswer === currentQuestion.correctAnswer){
+          // add to the number of correct answers
+          numCorrect++;
+  
+          // color the answers green
+          answerContainers[questionNumber].style.color = 'lightgreen';
         }
+        // if answer is wrong or blank
+        else{
+          // color the answers red
+          answerContainers[questionNumber].style.color = 'red';
+        }
+      });
+  
+      // show number of correct answers out of total
+      resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
     }
-    quiz.innerHTML = `
-    <h2>You answered ${score}/${quizData.length} questions correctly</h2>
-    <button onclick="location.reload()">Reload</button>
-    ` })
+  
+    const quizContainer = document.getElementById('quiz');
+    const resultsContainer = document.getElementById('results');
+    const submitButton = document.getElementById('submit');
+    const myQuestions = [
+      {
+        question: "Who invented JavaScript?",
+        answers: {
+          a: "Douglas Crockford",
+          b: "Sheryl Sandberg",
+          c: "Brendan Eich"
+        },
+        correctAnswer: "c"
+      },
+      {
+        question: "Which one of these is a JavaScript package manager?",
+        answers: {
+          a: "Node.js",
+          b: "TypeScript",
+          c: "npm"
+        },
+        correctAnswer: "c"
+      },
+      {
+        question: "Which tool can you use to ensure code quality?",
+        answers: {
+          a: "Angular",
+          b: "jQuery",
+          c: "RequireJS",
+          d: "ESLint"
+        },
+        correctAnswer: "d"
+      },
+        {
+        question: "Which of the following is not a JavaScript framework?",
+        answers: {
+            a: "Angular",
+            b: "Django",
+            c: "React",
+            d: "Vue"
+        },
+        correctAnswer: "b"
+        },
+        {
+            question: "Which of the following is not a JavaScript framework?",
+            answers: {
+                a: "Angular",
+                b: "Django",
+                c: "React",
+                d: "Vue"
+            },
+            correctAnswer: "b"
+            },
+        {
+                question: "Which of the following is not a JavaScript framework?",
+                answers: {
+                    a: "Angular",
+                    b: "Django",
+                    c: "React",
+                    d: "Vue"
+                },
+                correctAnswer: "b"
+                },
+                {
+                    question: "Which of the following is not a JavaScript framework?",
+                    answers: {
+                        a: "Angular",
+                        b: "Django",
+                        c: "React",
+                        d: "Vue"
+                    },
+                    correctAnswer: "b"
+                    },
+                    {
+                        question: "Which of the following is not a JavaScript framework?",
+                        answers: {
+                            a: "Angular",
+                            b: "Django",
+                            c: "React",
+                            d: "Vue"
+                        },
+                        correctAnswer: "b"
+                        },
+                        {
+                            question: "Who invented JavaScript?",
+                            answers: {
+                              a: "Douglas Crockford",
+                              b: "Sheryl Sandberg",
+                              c: "Brendan Eich"
+                            },
+                            correctAnswer: "c"
+                          },
+        
+    ];
+  
+    // Kick things off
+    buildQuiz();
+  
+    // Event listeners
+    submitButton.addEventListener('click', showResults);
+  })();
+
+  const nav1 = document.getElementById('q1')
+  nav1.addEventListener('click', () => {
+      document.getElementById('question1}').scrollIntoView({behavior: 'smooth'})
+  })

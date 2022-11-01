@@ -1,136 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
-*{
-  box-sizing: border-box;
-}
 body{
-  background-color: #b8c6db;
-  background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7f7 100%);
-  font-family: 'Poppins', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
+	font-size: 20px;
+	font-family: sans-serif;
+	color: #333;
 }
-.quiz-container{
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);
-  width: 600px;
-  overflow: hidden;
-  
+.question{
+	font-weight: 600;
 }
-.quiz-header{
-  padding: 4rem;
+.answers {
+  margin-bottom: 20px;
 }
-h2{
-  padding: 1rem;
-  text-align: center;
-  margin: 0;
-}
-ul{
-  list-style-type: none;
-  padding: 0;
-}
-ul li{
-  font-size: 1.2rem;
-  margin: 1rem 0;
-}
-ul li label{
-  cursor: pointer;
-}
-button{
-  background-color: lightblue;
-  color: #fff;
-  border: none;
+.answers label{
   display: block;
-  width: 100%;
-  cursor: pointer;
-  font-size: 1.1rem;
-  font-family: inherit;
-  padding: 1.3rem;
-  
 }
-button#next{
-    background-color: lightblue;
-    color: #000;
-    font-weight: 500;
-    display: inline-block;
-    width: 90%;
-    margin-right: 100px;
-    margin-bottom: 10px;
+#submit{
+	font-family: sans-serif;
+	font-size: 20px;
+	background-color: #279;
+	color: #fff;
+	border: 0px;
+	border-radius: 3px;
+	padding: 20px;
+	cursor: pointer;
+	margin-bottom: 20px;
 }
-button#previous{
-    background-color: lightblue;
-    color: #000;
-    font-weight: 500;
-    display: inline-block;
-    width: 110%;
-    margin-left: 10px;
-}
-button#submit{
-    background-color:green;
-    color: #000;
-    font-weight: 500;
-    display: inline-block;
-    width: 90%;
-    margin-right: 100px;
-    margin-left: 20px;
-    margin-bottom: 10px;
-}
-.outerButtons{
-  display: flex;
-  justify-content: space-between;
-  padding: 0 1rem;
-}
-.inner{
-  display: inline-block;
-}
-button:hover{
-  background-color: #04adc4;
-}
-button:focus{
-  outline: none;
-  
-}
-nav{
-    background-color: #03cae4;
-    color: #fff;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-nav a{
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.2rem;
-}
-nav a:hover{
-    text-decoration: underline;
-}
-nav span{
-    font-size: 1.2rem;
-}
-#timer{
-    float: left;
-    margin: 0;
-    padding: 0;
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: #fff;
-    background-color: #03cae4;
-    border: none;
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
-    margin: 1rem;
-    cursor: pointer;
-}
-.question-palette{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: #03cae4;
+#submit:hover{
+	background-color: #38a;
 }
