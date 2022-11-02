@@ -183,3 +183,33 @@ for (let i = 0; i < navbar.length; i++) {
     //document.getElementById(`question${i}`).scrollIntoView({ behavior: 'smooth' })
   })
 }
+
+
+// add a flag button to each question
+const questions = document.getElementsByClassName('question')
+for (let i = 0; i < questions.length; i++) {
+  const flag = document.createElement('button');
+  flag.innerHTML = 'Flag';
+  flag.classList.add('flag');
+  flag.addEventListener('click', () => {
+    const question = document.getElementById(`question${i}`);
+    // change the color of nav button
+    document.getElementById(`q${i+1}`).style.backgroundColor = 'red';
+  })
+  questions[i].appendChild(flag)
+}
+
+// create unflag button for each question and set to default color
+
+
+for (let i = 0; i < questions.length; i++) {
+const unflag = document.createElement('button');
+unflag.innerHTML = 'Unflag';
+unflag.classList.add('unflag');
+unflag.addEventListener('click', () => {
+  const question = document.getElementById(`question${i}`);
+  // change the color of nav button
+  document.getElementById(`q${i+1}`).style.backgroundColor = '#22799b';
+})
+questions[i].appendChild(unflag)
+}
