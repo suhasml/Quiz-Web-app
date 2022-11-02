@@ -172,14 +172,11 @@
     submitButton.addEventListener('click', showResults);
   })();
 
-  // const nav1 = document.getElementById('q1')
-  // nav1.addEventListener('click', () => {
-  //     document.getElementById('question0').scrollIntoView({behavior: 'smooth'})
-  // })
 
- for(let i=0; i<myQuestions.length; i++){
-    const nav = document.getElementById(`q${i+1}`)
-    nav.addEventListener('click', () => {
+
+const navbar = document.getElementsByClassName('navButton')
+for(let i=0; i<navbar.length; i++){
+    navbar[i].addEventListener('click', () => {
         document.getElementById(`question${i}`).scrollIntoView({behavior: 'smooth'})
     })
-  }
+}
