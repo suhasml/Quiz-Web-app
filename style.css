@@ -22,6 +22,11 @@ body {
 	margin-bottom: 20px;
 	background-color: aliceblue;
 	float: left;
+	margin-left: 5%;
+	position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  	z-index: 1; /* Stay on top */
+  /* Stay at the top */
+	margin-top: 10%;
 }
 .question-palette ul {
 	list-style: none;
@@ -50,7 +55,8 @@ body {
 	width: 100%;
 	max-width: 600px;
 	float: left;
-	margin-left: 10%;
+	margin-left: 30%;
+	margin-top: 10%;
 }
 #submit {
 	font-family: sans-serif;
@@ -68,4 +74,15 @@ body {
 
 #submit:hover {
 	background-color: #38a;
+}
+header{
+	background-color: #279;
+	color: #fff;
+	padding: 20px;
+	font-size: 20px;
+	font-weight: 600;
+	position: fixed;
+	width: 100%;
+	z-index: 2;
+	top: 0%;
 }
