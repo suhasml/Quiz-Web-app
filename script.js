@@ -16,7 +16,7 @@
             // ...add an HTML radio button
             answers.push(
               `<label>
-                <input type="radio" name="question${questionNumber}" id="question${questionNumber}" value="${letter}">
+                <input type="radio" name="question${questionNumber}"  value="${letter}">
                 
                 ${letter} :
                 ${currentQuestion.answers[letter]}
@@ -26,7 +26,7 @@
   
           // add this question and its answers to the output
           output.push(
-            `<div class="question"> ${currentQuestion.question} </div>
+            `<div class="question" id="question${questionNumber}" >${questionNumber+1}. ${currentQuestion.question} </div>
             <div class="answers"> ${answers.join('')} </div>`
           );
         }
@@ -172,7 +172,14 @@
     submitButton.addEventListener('click', showResults);
   })();
 
-  const nav1 = document.getElementById('q1')
-  nav1.addEventListener('click', () => {
-      document.getElementById('question1}').scrollIntoView({behavior: 'smooth'})
-  })
+  // const nav1 = document.getElementById('q1')
+  // nav1.addEventListener('click', () => {
+  //     document.getElementById('question0').scrollIntoView({behavior: 'smooth'})
+  // })
+
+ for(let i=0; i<myQuestions.length; i++){
+    const nav = document.getElementById(`q${i+1}`)
+    nav.addEventListener('click', () => {
+        document.getElementById(`question${i}`).scrollIntoView({behavior: 'smooth'})
+    })
+  }
