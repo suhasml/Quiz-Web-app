@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Online Exam</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="question-palette" id="question-palette">
         <div class="question-palette-body">
             <ul id="question-palette-body">
                 <li class="question-palette-item">
-                <nav class="palette">
-                    <!-- naviagate to question nunmbers-->
-                    <button id="q1" class="navButton">1</button>
-                    <button id="q2" class="navButton">2</button>
-                    <button id="q3" class="navButton">3</button>
-                    <button id="q4" class="navButton">4</button>
-                    <button id="q5" class="navButton">5</button>
-                    <button id="q6" class="navButton">6</button>
-                    <button id="q7" class="navButton">7</button>
-                    <button id="q8" class="navButton">8</button>
-                    <button id="q9" class="navButton">9</button>
-                </nav>      
-                
+                    <nav class="palette">
+                        <!-- naviagate to question nunmbers-->
+                        <button id="q1" class="navButton">1</button>
+                        <button id="q2" class="navButton">2</button>
+                        <button id="q3" class="navButton">3</button><br>
+                        <button id="q4" class="navButton">4</button>
+                        <button id="q5" class="navButton">5</button>
+                        <button id="q6" class="navButton">6</button><br>
+                        <button id="q7" class="navButton">7</button>
+                        <button id="q8" class="navButton">8</button>
+                        <button id="q9" class="navButton">9</button>
+                    </nav>
+
                 </li>
             </ul>
         </div>
-    <div id="quiz"></div>
-    <button id="submit">Submit Quiz</button>
-    <div id="results"></div>
-    
+    </div>
+    <div class="quizbody">
+        <div id="quiz"></div>
+        <button id="submit">Submit Quiz</button>
+        <div id="results"></div>
+    </div>
     <script src="script.js"></script>
 </body>
+
 </html>
